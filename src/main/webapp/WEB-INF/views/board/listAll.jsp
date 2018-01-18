@@ -52,7 +52,7 @@
 		let result = '${msg}';
 		
 		if(result == 'success')
-			alert("게시물 등록이 완료되었습니다.")
+			alert("처리가 완료되었습니다.")
 	});
 </script>
 

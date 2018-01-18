@@ -33,6 +33,7 @@
 						<input type="text" name="writer" class="form-control" value="${boardVO.writer }" readonly="readonly">
 					</div>
 				</div>
+				
 				<div class="box-footer">
 					<button type="submit" class="btn btn-warning" id="btnModify">Modify</button>
 					<button type="submit" class="btn btn-danger" id="btnRemove">REMOVE</button>

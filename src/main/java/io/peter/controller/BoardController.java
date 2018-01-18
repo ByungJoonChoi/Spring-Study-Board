@@ -56,4 +56,13 @@ public class BoardController {
 		
 		model.addAttribute(service.read(bno)); // view에서 boardVO로 받음.
 	}
+	
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception{
+		logger.info("/remove is called. bno : " + bno);
+		service.remove(bno);
+		
+		rttr.addFlashAttribute("msg", "success");
+		return "redirect:/board/listAll";
+	}
 }
