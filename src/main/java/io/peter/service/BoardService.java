@@ -3,6 +3,7 @@ package io.peter.service;
 import java.util.List;
 
 import io.peter.domain.BoardVO;
+import io.peter.domain.Criteria;
 
 public interface BoardService {
 	
@@ -15,4 +16,6 @@ public interface BoardService {
 	public void remove(Integer bno) throws Exception;
 	
 	public List<BoardVO> listAll() throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 }

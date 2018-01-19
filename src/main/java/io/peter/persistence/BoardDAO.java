@@ -3,6 +3,7 @@ package io.peter.persistence;
 import java.util.List;
 
 import io.peter.domain.BoardVO;
+import io.peter.domain.Criteria;
 
 public interface BoardDAO {
 	
@@ -17,4 +18,6 @@ public interface BoardDAO {
 	public List<BoardVO> listAll() throws Exception;
 	
 	public List<BoardVO> listPage(int page) throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 }

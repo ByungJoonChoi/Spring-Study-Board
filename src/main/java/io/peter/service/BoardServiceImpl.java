@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import io.peter.domain.BoardVO;
+import io.peter.domain.Criteria;
 import io.peter.persistence.BoardDAO;
 
 @Service
@@ -38,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return dao.listAll();
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		return dao.listCriteria(cri);
 	}
 
 }

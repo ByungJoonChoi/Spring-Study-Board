@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import io.peter.domain.BoardVO;
+import io.peter.domain.Criteria;
 import io.peter.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -55,6 +56,17 @@ public class BoardDAOTest {
 	@Test
 	public void e_testListPage() throws Exception{
 		for(BoardVO board : dao.listPage(1)){
+			logger.info(board.toString());
+		}		
+	}
+	
+	@Test
+	public void f_testListCriteria() throws Exception{
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+		
+		for(BoardVO board : dao.listCriteria(cri)){
 			logger.info(board.toString());
 		}		
 	}
