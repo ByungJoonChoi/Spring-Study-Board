@@ -54,9 +54,9 @@ public class BoardDAOTest {
 	
 	@Test
 	public void e_testListPage() throws Exception{
-		dao.listPage(1);
-		dao.listPage(2);
-		dao.listPage(3);
+		for(BoardVO board : dao.listPage(1)){
+			logger.info(board.toString());
+		}		
 	}
 	
 }
