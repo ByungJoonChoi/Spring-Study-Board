@@ -52,4 +52,11 @@ public class BoardDAOTest {
 		dao.delete(1);
 	}
 	
+	@Test
+	public void e_testListPage() throws Exception{
+		dao.listPage(1);
+		dao.listPage(2);
+		dao.listPage(3);
+	}
+	
 }
