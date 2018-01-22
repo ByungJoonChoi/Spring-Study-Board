@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.peter.domain.BoardVO;
+import io.peter.domain.Criteria;
 import io.peter.service.BoardService;
 
 @Controller
@@ -80,5 +81,13 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 	
-	
+	@RequestMapping(value="/listCri", method=RequestMethod.GET)
+	public void listAll(Criteria cri, Model model) throws Exception{  
+		/*
+		 * 쿼리스트링으로 데이터를 전달했을 때, 해당 데이터가 Criteria 객체 맴버 변수로 정의되어 있는 경우,
+		 * 해당 변수의 setter가 호출됨. 
+		 */
+		logger.info("show list Page with Criteria.................");
+		model.addAttribute("list", service.listCriteria(cri));
+	}
 }

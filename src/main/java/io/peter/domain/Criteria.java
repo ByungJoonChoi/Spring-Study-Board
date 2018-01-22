@@ -5,11 +5,13 @@ public class Criteria {
 	private int perPageNum;
 	
 	public Criteria() {
+		System.out.println("Criteria() is called");
 		this.page = 1;
 		this.perPageNum = 10; // 한 페이지에서 보여줄 게시물의 갯수.
 	}
 	
 	public void setPage(int page) {
+		System.out.println("setPage() is called");
 		if(page <= 0){
 			this.page = 1;
 			return;
@@ -18,6 +20,7 @@ public class Criteria {
 	}
 	
 	public void setPerPageNum(int perPageNum) {
+		System.out.println("setPerPageNum() is called");
 		if(perPageNum <= 0 || perPageNum > 100){
 			this.perPageNum = 10;
 			return;
