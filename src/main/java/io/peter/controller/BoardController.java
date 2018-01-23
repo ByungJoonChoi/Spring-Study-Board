@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.peter.domain.BoardVO;
 import io.peter.domain.Criteria;
+import io.peter.domain.PageMaker;
 import io.peter.service.BoardService;
 
 @Controller
@@ -89,5 +90,18 @@ public class BoardController {
 		 */
 		logger.info("show list Page with Criteria.................");
 		model.addAttribute("list", service.listCriteria(cri));
+	}
+	
+	@RequestMapping(value="/listPage", method=RequestMethod.GET)
+	public void listPage(Criteria cri, Model model) throws Exception{
+		
+		logger.info(cri.toString());
+		
+		model.addAttribute("list", service.listCriteria(cri));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(131); // 테스트를 위해 값을 직접 입력. TODO : DB에서 직접 가져오기 
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 }
