@@ -1,5 +1,8 @@
 package io.peter.domain;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 	
 	private int totalCount; // DB에 저장된 게시물의 총 갯수. 
@@ -34,6 +37,17 @@ public class PageMaker {
 		}
 		prev = startPage == 1 ? false : true;
 		next = endPage * cri.getPerPageNum() < totalCount ? true : false; 
+	}
+	
+	public String makeQuery(int page){
+		
+		UriComponents uriComponents = 
+				UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum())
+				.build();
+		
+		return uriComponents.toUriString();
 	}
 
 	public int getStartPage() {
