@@ -100,7 +100,7 @@ public class BoardController {
 		model.addAttribute("list", service.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(131); // 테스트를 위해 값을 직접 입력. TODO : DB에서 직접 가져오기 
+		pageMaker.setTotalCount(service.listCountCriteria(cri)); // DB에서 직접 게시물의 갯수를 쿼리하여 가져오기 
 		
 		model.addAttribute("pageMaker", pageMaker);
 	}
