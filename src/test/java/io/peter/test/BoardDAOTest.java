@@ -1,5 +1,7 @@
 package io.peter.test;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.FixMethodOrder;
@@ -15,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import io.peter.domain.BoardVO;
 import io.peter.domain.Criteria;
+import io.peter.domain.SearchCriteria;
 import io.peter.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -101,6 +104,27 @@ public class BoardDAOTest {
 		
 		logger.info("/board/read?bno=12&perPageNum=20");
 		logger.info(uriComponents.toString());
+	}
+	
+	@Test
+	public void testDynamic() throws Exception{
+		
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("종로");
+		cri.setSearchType("t");
+		
+		logger.info("================================================");
+		
+		List<BoardVO> list = dao.listSearch(cri);
+		
+		for(BoardVO boardVO : list){
+			logger.info(boardVO.getBno() + ": " + boardVO.getTitle());
+		}
+		
+		
+		logger.info("================================================");
+		logger.info("COUNT : " + dao.listSearchCount(cri));
 	}
 	
 }

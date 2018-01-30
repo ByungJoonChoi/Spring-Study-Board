@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.peter.domain.BoardVO;
 import io.peter.domain.Criteria;
+import io.peter.domain.SearchCriteria;
 
 public interface BoardDAO {
 	
@@ -22,4 +23,8 @@ public interface BoardDAO {
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	
 	public int countPaging(Criteria cri) throws Exception;
+	
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception;
+	
+	public int listSearchCount(SearchCriteria cri) throws Exception;
 }
