@@ -111,8 +111,8 @@ public class BoardDAOTest {
 		
 		SearchCriteria cri = new SearchCriteria();
 		cri.setPage(1);
-		cri.setKeyword("종로");
-		cri.setSearchType("t");
+		cri.setKeyword("최");
+		cri.setSearchType("tcw");
 		
 		logger.info("================================================");
 		
@@ -122,9 +122,7 @@ public class BoardDAOTest {
 			logger.info(boardVO.getBno() + ": " + boardVO.getTitle());
 		}
 		
-		
 		logger.info("================================================");
 		logger.info("COUNT : " + dao.listSearchCount(cri));
 	}
-	
 }
