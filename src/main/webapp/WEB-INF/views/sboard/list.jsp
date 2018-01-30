@@ -99,6 +99,18 @@
 		
 		if(result == 'success')
 			alert("처리가 완료되었습니다.")
+			
+		$("#searchBtn").on("click", function(event){
+			console.log("searchBtn")
+			self.location = "list"
+				+ '${pageMaker.makeQuery(1)}'
+				+ "&searchType=" + $('select option:selected').val()
+				+ "&keyword=" + encodeURIComponent($("#keywordInput").val());
+		})
+		
+		$("#newBtn").on("click", function(event){
+			self.location = "register";
+		})
 	});
 </script>
 
