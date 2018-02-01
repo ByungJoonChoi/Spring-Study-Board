@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.peter.domain.PageMaker;
 import io.peter.domain.SearchCriteria;
@@ -43,5 +44,19 @@ public class SearchBoardController {
 			@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
 		model.addAttribute(service.read(bno));
+	}
+	
+	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
+	public String remove(@RequestParam("bno") Integer bno, SearchCriteria cri, RedirectAttributes rttr) throws Exception{
+		
+		service.remove(bno);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/sboard/list";
 	}
 }
