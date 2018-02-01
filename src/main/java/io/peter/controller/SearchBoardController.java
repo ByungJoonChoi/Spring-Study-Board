@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import io.peter.domain.PageMaker;
 import io.peter.domain.SearchCriteria;
@@ -35,5 +36,12 @@ public class SearchBoardController {
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
+	public void read(@RequestParam("bno") Integer bno,
+			@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+		
+		model.addAttribute(service.read(bno));
 	}
 }
