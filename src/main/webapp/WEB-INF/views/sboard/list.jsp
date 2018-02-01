@@ -94,11 +94,15 @@
 	</div>	
 </section>
 <script>
-	$(function(){
+	$(window).on("load", function(){
 		let result = '${msg}';
 		
-		if(result == 'success')
+		if(result == 'success'){
 			alert("처리가 완료되었습니다.")
+			/* setTimeout(function() {
+				alert("처리가 완료되었습니다.")
+		 	}, 1000); */
+		}
 			
 		$("#searchBtn").on("click", function(event){
 			console.log("searchBtn")
