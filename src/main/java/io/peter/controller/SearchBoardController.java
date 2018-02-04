@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import io.peter.domain.BoardVO;
 import io.peter.domain.PageMaker;
 import io.peter.domain.SearchCriteria;
 import io.peter.service.BoardService;
@@ -59,4 +60,29 @@ public class SearchBoardController {
 		
 		return "redirect:/sboard/list";
 	}
+	
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
+	public void modifyGET(@ModelAttribute("cri") SearchCriteria cri, 
+			int bno, Model model) throws Exception{
+		
+		model.addAttribute(service.read(bno));
+	}
+	
+	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
+	public String modifyPOST(BoardVO board, 
+			SearchCriteria cri,
+			RedirectAttributes rttr) throws Exception{
+		
+		service.modify(board);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/sboard/list";
+	}
+	
+	
 }
